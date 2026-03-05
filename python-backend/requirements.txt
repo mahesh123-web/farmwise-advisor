@@ -1,0 +1,12 @@
+flask==3.0.0
+flask-cors==4.0.0
+gunicorn
+torch==2.10.0
+torchvision==0.25.0
+timm
+scikit-learn
+pandas
+numpy
+Pillow
+joblib
+requests
