@@ -29,7 +29,7 @@ const AuthPage = ({ onAuth }) => {
     setSuccess('');
     try {
       if (mode === 'signup') {
-        const { data, error } = await supabase.auth.signUp({
+        const { data: signUpData, error } = await supabase.auth.signUp({
           email,
           password,
           options: { data: { full_name: fullName } }
@@ -205,10 +205,6 @@ const HistoryPanel = ({ userId, onRestore }) => {
   const [loading, setLoading]   = useState(true);
   const [expanded, setExpanded] = useState(null);
 
-  useEffect(() => {
-    fetchHistory();
-  }, [userId]);
-
   const fetchHistory = async () => {
     setLoading(true);
     const { data, error } = await supabase
@@ -220,6 +216,9 @@ const HistoryPanel = ({ userId, onRestore }) => {
     if (!error) setRecords(data || []);
     setLoading(false);
   };
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { fetchHistory(); }, [userId]);
 
   const deleteRecord = async (id) => {
     await supabase.from('analyses').delete().eq('id', id);
