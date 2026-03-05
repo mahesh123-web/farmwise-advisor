@@ -29,7 +29,7 @@ const AuthPage = ({ onAuth }) => {
     setSuccess('');
     try {
       if (mode === 'signup') {
-        const { data: signUpData, error } = await supabase.auth.signUp({
+        const { data: _signUpData, error } = await supabase.auth.signUp({
           email,
           password,
           options: { data: { full_name: fullName } }
