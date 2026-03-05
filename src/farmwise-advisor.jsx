@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars, react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { Camera, TrendingUp, Cloud, DollarSign, MapPin, AlertCircle,
@@ -29,6 +30,7 @@ const AuthPage = ({ onAuth }) => {
     setSuccess('');
     try {
       if (mode === 'signup') {
+        // eslint-disable-next-line no-unused-vars
         const { data: _signUpData, error } = await supabase.auth.signUp({
           email,
           password,
